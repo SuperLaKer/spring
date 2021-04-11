@@ -1,7 +1,7 @@
 spring-framework 源码阅读环境
 ---
 
-网络不好修改这里：
+网络问题：
 - 修改此配置文件：`/gradle/gradle-wrapper.properties`
   </br>
 ` distributionUrl=file\:///d\:/env/zip/gradle-6.7-bin.zip`

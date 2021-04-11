@@ -7,13 +7,15 @@ spring-framework 源码阅读环境
 ` distributionUrl=file\:///d\:/env/zip/gradle-6.7-bin.zip`
 
 编译问题:
-
+  </br>
 gradlew build -x test -x javadoc -x dokka -x asciidoctor -x asciidoctorPdf -x checkstyleMain
+  </br>
 // to-idea
 gradlew :spring-oxm:compileTestJava -x test -x javadoc -x dokka -x asciidoctor -x asciidoctorPdf
     
 
 修改：
+  </br>
 gradle使用阿里镜像源
 移除spring-core
 直接依赖spring-core.jar避免一大堆异常

@@ -133,7 +133,7 @@ public class InvocableHandlerMethod extends HandlerMethod {
 	@Nullable
 	public Object invokeForRequest(NativeWebRequest request, @Nullable ModelAndViewContainer mavContainer,
 			Object... providedArgs) throws Exception {
-
+		// 参数已经解析好了
 		Object[] args = getMethodArgumentValues(request, mavContainer, providedArgs);
 		if (logger.isTraceEnabled()) {
 			logger.trace("Arguments: " + Arrays.toString(args));
@@ -150,6 +150,7 @@ public class InvocableHandlerMethod extends HandlerMethod {
 	protected Object[] getMethodArgumentValues(NativeWebRequest request, @Nullable ModelAndViewContainer mavContainer,
 			Object... providedArgs) throws Exception {
 
+		// 解析参数
 		MethodParameter[] parameters = getMethodParameters();
 		if (ObjectUtils.isEmpty(parameters)) {
 			return EMPTY_ARGS;
@@ -163,13 +164,15 @@ public class InvocableHandlerMethod extends HandlerMethod {
 			if (args[i] != null) {
 				continue;
 			}
+			// ==========================HandlerMethodArgumentResolver====================
+			// supportsParameter
 			if (!this.resolvers.supportsParameter(parameter)) {
 				throw new IllegalStateException(formatArgumentError(parameter, "No suitable resolver"));
 			}
 			try {
+				// resolveArgument
 				args[i] = this.resolvers.resolveArgument(parameter, mavContainer, request, this.dataBinderFactory);
-			}
-			catch (Exception ex) {
+			} catch (Exception ex) {
 				// Leave stack trace for later, exception may actually be resolved and handled...
 				if (logger.isDebugEnabled()) {
 					String exMsg = ex.getMessage();

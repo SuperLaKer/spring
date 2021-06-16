@@ -42,7 +42,7 @@ import org.springframework.web.servlet.View;
 import org.springframework.web.util.UriComponentsBuilder;
 
 /**
- * Resolves method arguments annotated with an @{@link PathVariable}.
+ * 解决以@ {@ link PathVariable}注释的方法参数.
  *
  * <p>An @{@link PathVariable} is a named value that gets resolved from a URI template variable.
  * It is always required and does not have a default value to fall back on. See the base class

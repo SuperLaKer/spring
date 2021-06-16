@@ -28,8 +28,8 @@ import org.springframework.web.bind.support.WebDataBinderFactory;
 import org.springframework.web.context.request.NativeWebRequest;
 
 /**
- * Resolves method parameters by delegating to a list of registered
- * {@link HandlerMethodArgumentResolver HandlerMethodArgumentResolvers}.
+ * 通过委派给已注册的HandlerMethodArgumentResolvers列表来解析方法参数，将先前解析的方法参数缓存起来以加快查找速度
+ * Resolves method parameters by delegating to a list of registered HandlerMethodArgumentResolvers
  * Previously resolved method parameters are cached for faster lookups.
  *
  * @author Rossen Stoyanchev
@@ -38,8 +38,10 @@ import org.springframework.web.context.request.NativeWebRequest;
  */
 public class HandlerMethodArgumentResolverComposite implements HandlerMethodArgumentResolver {
 
+	// 所有的HandlerMethodArgumentResolver
 	private final List<HandlerMethodArgumentResolver> argumentResolvers = new ArrayList<>();
 
+	// 缓存
 	private final Map<MethodParameter, HandlerMethodArgumentResolver> argumentResolverCache =
 			new ConcurrentHashMap<>(256);
 
@@ -132,6 +134,7 @@ public class HandlerMethodArgumentResolverComposite implements HandlerMethodArgu
 			for (HandlerMethodArgumentResolver resolver : this.argumentResolvers) {
 				if (resolver.supportsParameter(parameter)) {
 					result = resolver;
+					// 缓存
 					this.argumentResolverCache.put(parameter, result);
 					break;
 				}

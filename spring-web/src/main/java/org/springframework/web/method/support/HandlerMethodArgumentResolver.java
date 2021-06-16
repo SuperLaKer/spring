@@ -23,8 +23,7 @@ import org.springframework.web.bind.support.WebDataBinderFactory;
 import org.springframework.web.context.request.NativeWebRequest;
 
 /**
- * Strategy interface for resolving method parameters into argument values in
- * the context of a given request.
+ 策略接口，用于在给定请求的上下文中将方法参数解析为参数值.
  *
  * @author Arjen Poutsma
  * @since 3.1
@@ -33,16 +32,12 @@ import org.springframework.web.context.request.NativeWebRequest;
 public interface HandlerMethodArgumentResolver {
 
 	/**
-	 * Whether the given {@linkplain MethodParameter method parameter} is
-	 * supported by this resolver.
-	 * @param parameter the method parameter to check
-	 * @return {@code true} if this resolver supports the supplied parameter;
-	 * {@code false} otherwise
+	 * 此解析器是否支持处理给定的方法参数
 	 */
 	boolean supportsParameter(MethodParameter parameter);
 
 	/**
-	 * Resolves a method parameter into an argument value from a given request.
+	 * 将方法参数解析为给定请求的参数值.
 	 * A {@link ModelAndViewContainer} provides access to the model for the
 	 * request. A {@link WebDataBinderFactory} provides a way to create
 	 * a {@link WebDataBinder} instance when needed for data binding and
@@ -53,7 +48,7 @@ public interface HandlerMethodArgumentResolver {
 	 * @param mavContainer the ModelAndViewContainer for the current request
 	 * @param webRequest the current request
 	 * @param binderFactory a factory for creating {@link WebDataBinder} instances
-	 * @return the resolved argument value, or {@code null} if not resolvable
+	 * @return 解析的参数值；如果无法解析，则为{@code null}, 直接返回值
 	 * @throws Exception in case of errors with the preparation of argument values
 	 */
 	@Nullable

@@ -1,0 +1,53 @@
+
+1、new AnnotationConfigApplicationContext(配置类、后置处理器、普通类：统称componentClasses) {
+    1.1、new AnnotatedBeanDefinitionReader(this); this.scanner = new ClassPathBeanDefinitionScanner(this);
+    1.2、register(componentClasses); 配置类直接注册为bd
+    1.3、refresh()
+}
+
+2、refresh(){
+
+     2.1、invokeBeanFactoryPostProcessors(beanFactory){
+
+        1、- 先处理内置的BeanDefinitionRegistryPostProcessor(扫描所有的注解什么的...其中包含后置处理器):
+            处理componentScan: 处理所有的Import(ImportSelector, ImportBeanDefinitionRegistrar)，component等
+
+        2、- 所有类均注册为bd（包括自定义的postProcessor和RegistryPostProcessor）
+
+        3、- 接着处理剩下的BeanDefinitionRegistryPostProcessor，
+            可以修改beanDefinition的属性如beanClass, 构造参数, 属性注入模型（默认为no,可选byName, byType）
+                dubbo在这里完成了对@DubboService的扫描
+                (继承beanDefinitionRegistrar,扩展include.FilterType.annotation += @DubboService)
+
+        - 然后处理剩下的 RegistryPostProcessor(独有方法已经在上一步骤处理完成) + PostProcessor(唯一一个方法)
+          ConfigurationClassPostProcessor在这里完成了@Configuration类的CGLIB代理(应该没错)
+     }
+
+     2.2、单例对象实例化: finishBeanFactoryInitialization(){
+
+        - singletonObject.getBean()
+        - λ - createBean()
+        - 获取一个最佳的构造方法,反射：ctor.newInstance(args)
+        - return beanWrapper
+
+        - 存储工厂bean: put(beanFactory(wrapIfNecessary)); 是否需要包装，应该和代理有关
+
+        - 填充属性bean = beanWrapper.getBean(beanName)
+        - 属性填充三种模型 0， 1， 2
+            (@Qualifier按照beanName注入)
+            (@Autowire: 先根据类型, 在根据名字注入)
+            (只提供set方法是按照类型, 需要修改beanDefinition。不是默认的注入模型)
+
+
+        - todo 👉 To be continued··· 待续
+    }
+}
+
+
+
+
+循环引用的代理在singletonFactory.createBean()中完成的
+
+非循环引用：在填充属性后的下一行代码init中完成的{
+    // 调用后置处理器完成代理
+}

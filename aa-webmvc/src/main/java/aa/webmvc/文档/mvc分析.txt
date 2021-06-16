@@ -1,0 +1,23 @@
+mvc
+
+request ---> servlet --->方法调用(反射)---> controller.java
+request ---> 请求行 ---> 匹配 ---> controller.getMapping(唯一)
+
+
+servlet ---> init() | service
+
+
+确定controller ---> 统一适配对请求进行下一步处理
+
+
+
+
+----------------选择 handlerMapping----------------
+
+三种handlerMapping维护一个map
+最常用的一种
+(HandlerMapping)RequestMappingHandlerMapping -> url:method --- (父类Object)HandlerMethod
+
+
+----------------处理器——适配器
+(父类Object)HandlerMethod

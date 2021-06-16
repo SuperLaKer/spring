@@ -1,0 +1,13 @@
+GET http://localhost:8080/methodController/method1
+Accept: application/json
+
+###
+GET http://localhost:8080/methodController//method2/1
+Accept: application/json
+
+
+###
+GET http://localhost:8080/self
+
+###
+GET http://localhost:8080/pathVariable/1

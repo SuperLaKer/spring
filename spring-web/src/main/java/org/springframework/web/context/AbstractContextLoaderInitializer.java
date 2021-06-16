@@ -25,6 +25,7 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.context.ApplicationContextInitializer;
 import org.springframework.lang.Nullable;
 import org.springframework.web.WebApplicationInitializer;
+import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 
 /**
  * Convenient base class for {@link WebApplicationInitializer} implementations
@@ -57,13 +58,13 @@ public abstract class AbstractContextLoaderInitializer implements WebApplication
 	 * @param servletContext the servlet context to register the listener against
 	 */
 	protected void registerContextLoaderListener(ServletContext servletContext) {
+		// 创建这个容器AnnotationConfigWebApplicationContext,
 		WebApplicationContext rootAppContext = createRootApplicationContext();
 		if (rootAppContext != null) {
 			ContextLoaderListener listener = new ContextLoaderListener(rootAppContext);
 			listener.setContextInitializers(getRootApplicationContextInitializers());
 			servletContext.addListener(listener);
-		}
-		else {
+		} else {
 			logger.debug("No ContextLoaderListener registered, as " +
 					"createRootApplicationContext() did not return an application context");
 		}
@@ -80,7 +81,7 @@ public abstract class AbstractContextLoaderInitializer implements WebApplication
 	 * desired
 	 * @see org.springframework.web.servlet.support.AbstractDispatcherServletInitializer
 	 */
-	@Nullable
+	@Nullable  // 子类实现了这个方法
 	protected abstract WebApplicationContext createRootApplicationContext();
 
 	/**

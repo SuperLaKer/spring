@@ -489,19 +489,19 @@ public class DispatcherServlet extends FrameworkServlet {
 	}
 
 	/**
-	 * Initialize the strategy objects that this servlet uses.
+	 * 初始化此servlet使用的策略对象.
 	 * <p>May be overridden in subclasses in order to initialize further strategy objects.
 	 */
 	protected void initStrategies(ApplicationContext context) {
-		initMultipartResolver(context);
-		initLocaleResolver(context);
-		initThemeResolver(context);
-		initHandlerMappings(context);
-		initHandlerAdapters(context);
-		initHandlerExceptionResolvers(context);
-		initRequestToViewNameTranslator(context);
-		initViewResolvers(context);
-		initFlashMapManager(context);
+		initMultipartResolver(context);  // 上传文件
+		initLocaleResolver(context);  // 国际化
+		initThemeResolver(context);  // 主题
+		initHandlerMappings(context);  // 请求映射
+		initHandlerAdapters(context);  // 请求处理器适配器
+		initHandlerExceptionResolvers(context);  // 异常处理器
+		initRequestToViewNameTranslator(context);  //
+		initViewResolvers(context);  // 视图转换
+		initFlashMapManager(context); // 重定向
 	}
 
 	/**
@@ -863,6 +863,7 @@ public class DispatcherServlet extends FrameworkServlet {
 				// Load default strategy implementations from properties file.
 				// This is currently strictly internal and not meant to be customized
 				// by application developers.
+				// 初始化几个controller
 				ClassPathResource resource = new ClassPathResource(DEFAULT_STRATEGIES_PATH, DispatcherServlet.class);
 				defaultStrategies = PropertiesLoaderUtils.loadProperties(resource);
 			}
@@ -1029,18 +1030,18 @@ public class DispatcherServlet extends FrameworkServlet {
 			ModelAndView mv = null;
 			Exception dispatchException = null;
 
-			try {
+			try {// 文件上传
 				processedRequest = checkMultipart(request);
 				multipartRequestParsed = (processedRequest != request);
 
 				// Determine handler for the current request.
-				mappedHandler = getHandler(processedRequest);
+				mappedHandler = getHandler(processedRequest);  // 可能是方法，可能是类统一使用mappedHandler表示
 				if (mappedHandler == null) {
 					noHandlerFound(processedRequest, response);
 					return;
 				}
 
-				// Determine handler adapter for the current request.
+				// 不同类型的controller处理方式不一样
 				HandlerAdapter ha = getHandlerAdapter(mappedHandler.getHandler());
 
 				// Process last-modified header, if supported by the handler.
@@ -1052,7 +1053,7 @@ public class DispatcherServlet extends FrameworkServlet {
 						return;
 					}
 				}
-
+				// 前置处理器
 				if (!mappedHandler.applyPreHandle(processedRequest, response)) {
 					return;
 				}

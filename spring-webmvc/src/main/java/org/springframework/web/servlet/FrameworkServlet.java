@@ -63,6 +63,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.context.request.async.CallableProcessingInterceptor;
 import org.springframework.web.context.request.async.WebAsyncManager;
 import org.springframework.web.context.request.async.WebAsyncUtils;
+import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.context.support.ServletRequestHandledEvent;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 import org.springframework.web.context.support.XmlWebApplicationContext;
@@ -527,6 +528,7 @@ public abstract class FrameworkServlet extends HttpServletBean implements Applic
 		long startTime = System.currentTimeMillis();
 
 		try {
+			// 初始化spring容器
 			this.webApplicationContext = initWebApplicationContext();
 			initFrameworkServlet();
 		}
@@ -558,6 +560,7 @@ public abstract class FrameworkServlet extends HttpServletBean implements Applic
 	 * @see #setContextConfigLocation
 	 */
 	protected WebApplicationContext initWebApplicationContext() {
+		// onStart创建的：AnnotationConfigWebApplicationContext
 		WebApplicationContext rootContext =
 				WebApplicationContextUtils.getWebApplicationContext(getServletContext());
 		WebApplicationContext wac = null;
@@ -831,10 +834,7 @@ public abstract class FrameworkServlet extends HttpServletBean implements Applic
 	}
 
 	/**
-	 * Callback that receives refresh events from this servlet's WebApplicationContext.
-	 * <p>The default implementation calls {@link #onRefresh},
-	 * triggering a refresh of this servlet's context-dependent state.
-	 * @param event the incoming ApplicationContext event
+	 * 容器refresh事件，容器已经就绪，做一些事情比如：构建url ---> controller映射关系，dispatcher
 	 */
 	public void onApplicationEvent(ContextRefreshedEvent event) {
 		this.refreshEventReceived = true;

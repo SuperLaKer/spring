@@ -12,9 +12,15 @@ spring-framework 源码阅读环境
 - 指定好gradle的位置之后刷新IDEA就行了，等待下载依赖(👇可以指定依赖下载的位置)
 - (自定义依赖的下载位置需要添加环境变量`GRADLE_USER_HOME=自己的文件夹绝对路径`)
 - 先编译后打包，看项目根目录下面的图片👇👇`spring-source-env\gradle编译打包.PNG`
+- `build`时会报`spring-oxm`错误，这个错误不用管，直接执行jar命令。
 - 打包完成去`aa-test`工程下面愉快玩耍
 
-- (项目的依赖，可以放到GRADLE_USER_HOME下面👆(看网络情况)`链接：https://pan.baidu.com/s/1R5-qzppPVXmz-EbDBXjP4w 提取码：like`)
+
+**环境变量**
+我的环境变量`GRADLE_USER_HOME=D:\dev\env\repo\gradle\`，目录结构看项目根目录的图片`gradle_user_home.png`
+我的的依赖，解压后放到GRADLE_USER_HOME下面👆(看自己网络情况)`链接：https://pan.baidu.com/s/1R5-qzppPVXmz-EbDBXjP4w 提取码：like`)
+
+
 
 ### 做了一些修改
 1、不在依赖`spring-core`，直接引用maven包。core中有很多依赖很难搞，避免一大堆依赖异常
@@ -28,6 +34,7 @@ spring-framework 源码阅读环境
 - 模块间依赖：`compile(project(":spring-context"))`
 - 如果IDEA版本较高的话可以直接往xxx.gradle中粘贴maven的依赖，IDEA会直接转化为gradle格式的依赖
 - maven项目可以转化为gradle，但是会出现跟多问题
+- gradle在本地有自己的仓库和maven不共用，可以从本地maven仓库获取依赖(然后拷贝到gradle自己的仓库)
 
  
 **希望用不到**

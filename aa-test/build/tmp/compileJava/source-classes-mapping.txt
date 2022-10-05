@@ -1,2 +1,0 @@
-org/springframework/Main.java
- org.springframework.Main

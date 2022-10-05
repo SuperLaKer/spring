@@ -10,6 +10,7 @@ public class Main {
 	    ac.register(Main.class);
 	    ac.refresh();
 	    try {
+			// 输出：org.springframework.context.annotation.internalConfigurationAnnotationProcessor
 	        System.out.println(ac.getBeanDefinitionNames()[0]);
 	    }catch (Exception e) {
 	        e.printStackTrace();

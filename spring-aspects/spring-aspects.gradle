@@ -21,14 +21,7 @@ dependencies {
 	optional(project(":spring-tx"))  // for JPA, @Transactional support
 	optional("javax.cache:cache-api")  // for JCache aspect
 	optional("javax.transaction:javax.transaction-api")  // for @javax.transaction.Transactional support
-	testCompile('org.springframework:spring-core:5.3.1')  // for CodeStyleAspect
-	testCompile(project(":spring-test"))
-	testCompile(testFixtures(project(":spring-context")))
-	testCompile(testFixtures(project(":spring-context-support")))
-	testCompile(testFixtures('org.springframework:spring-core:5.3.1'))
-	testCompile(testFixtures(project(":spring-tx")))
-	testCompile("javax.mail:javax.mail-api")
-	testCompileOnly("org.aspectj:aspectjrt")
+
 }
 
 eclipse.project {

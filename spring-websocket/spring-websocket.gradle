@@ -21,9 +21,5 @@ dependencies {
 	optional("io.undertow:undertow-servlet")
 	optional("io.undertow:undertow-websockets-jsr")
 	optional("com.fasterxml.jackson.core:jackson-databind")
-	testCompile(testFixtures('org.springframework:spring-core:5.3.1'))
-	testCompile(testFixtures(project(":spring-web")))
-	testCompile("org.apache.tomcat.embed:tomcat-embed-core")
-	testCompile("org.apache.tomcat.embed:tomcat-embed-websocket")
-	testCompile("io.projectreactor.netty:reactor-netty-http")
+
 }

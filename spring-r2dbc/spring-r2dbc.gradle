@@ -13,11 +13,5 @@ dependencies {
 	optional("org.jetbrains.kotlin:kotlin-stdlib")
 	optional("org.jetbrains.kotlinx:kotlinx-coroutines-core")
 	optional("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
-	testCompile(project(":kotlin-coroutines"))
-	testCompile(testFixtures(project(":spring-beans")))
-	testCompile(testFixtures('org.springframework:spring-core:5.3.1'))
-	testCompile(testFixtures(project(":spring-context")))
-	testCompile("io.projectreactor:reactor-test")
-	testCompile("io.r2dbc:r2dbc-h2")
-	testCompile("io.r2dbc:r2dbc-spi-test:0.8.1.RELEASE")
+
 }

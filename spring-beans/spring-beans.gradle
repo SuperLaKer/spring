@@ -10,10 +10,6 @@ dependencies {
 	optional("org.codehaus.groovy:groovy-xml")
 	optional("org.jetbrains.kotlin:kotlin-reflect")
 	optional("org.jetbrains.kotlin:kotlin-stdlib")
-	testCompile(testFixtures('org.springframework:spring-core:5.3.1'))
-	testCompile("javax.annotation:javax.annotation-api")
-	testFixturesApi("org.junit.jupiter:junit-jupiter-api")
-	testFixturesImplementation("org.assertj:assertj-core")
 }
 
 // This module does joint compilation for Java and Groovy code with the compileGroovy task.

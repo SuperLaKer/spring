@@ -6,7 +6,4 @@ dependencies {
 	optional("org.aspectj:aspectjweaver")
 	optional("org.apache.commons:commons-pool2")
 	optional("com.jamonapi:jamon")
-	testCompile(testFixtures(project(":spring-beans")))
-	compile 'org.springframework:spring-core:5.3.1'
-	testFixturesImplementation(testFixtures('org.springframework:spring-core:5.3.1'))
 }

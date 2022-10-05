@@ -3,11 +3,15 @@ spring-framework 源码阅读环境
 ---
 spring-frame版本：5.3.1两年前搭的，没必要追求最新的最下面有搭建方式
 仓库地址`https://github.com/SuperLaKer/spring-source-env.git`
+5.3.1 我的JDK版本`1.8.0_281`。IDEA版本2020.3没问题
+高版本IDEA会出现`Werror`的问题参考这个`https://blog.csdn.net/Summer_Xi/article/details/120779190`，每个模块都要去掉-Werror
+
+
 
 
 ### 搭建环境
 
-- 我的JDK版本`1.8.0_281`。IDEA版本2020.2之后发布的就可以，之前IDEA的没有试过`https://www.jetbrains.com/idea/download/other.html`
+- 
 - 使用IDEA克隆并打开项目
 - IDEA会提示找不到gradle-6.7的压缩包👇，修改`/gradle/wrapper/gradle-wrapper.properties`指定自己gradle压缩包的位置
 - (下载gradle`https://downloads.gradle-dn.com/distributions/gradle-6.7-bin.zip`)

@@ -62,8 +62,5 @@ settings.gradle.projectsLoaded {
 		}
 	}
 }
-include 'aa-env-test'
-include 'aa-spring-task'
-include 'aa-webmvc'
-include 'aa-analysis'
+include 'aa-test'
 

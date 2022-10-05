@@ -1,9 +1,0 @@
-过滤器Filter:  所有请求，需要放行doFilter(request, response)
-token什么的都没有问题
-
-
-拦截器Interceptor: 请求之前,(是否有访问资源的权限)
-
-
-
-Servlet Filter Listener

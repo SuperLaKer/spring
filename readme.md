@@ -1,6 +1,8 @@
 spring-framework 源码阅读环境
 ---
 
+仓库地址`https://github.com/SuperLaKer/spring-source-env.git`
+
 
 ### 搭建环境
 - 我的JDK版本`1.8.0_281`。IDEA版本2020.2之后发布的就可以，之前IDEA的没有试过`https://www.jetbrains.com/idea/download/other.html`
@@ -12,6 +14,7 @@ spring-framework 源码阅读环境
 - 先编译后打包，看项目根目录下面的图片👇👇`spring-source-env\gradle编译打包.PNG`
 - 打包完成去`aa-test`工程下面愉快玩耍
 
+- (项目的依赖，可以放到GRADLE_USER_HOME下面👆(看网络情况)`链接：https://pan.baidu.com/s/1R5-qzppPVXmz-EbDBXjP4w 提取码：like`)
 
 ### 做了一些修改
 1、不在依赖`spring-core`，直接引用maven包。core中有很多依赖很难搞，避免一大堆依赖异常

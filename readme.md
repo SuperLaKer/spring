@@ -38,7 +38,7 @@ repositories {
 ```
 
 ## 使用IDEA构建
-默认情况使用gradle编译运行日志比较多，可以运行`aa-test/org.springframework.Main`看看。
+默认情况使用gradle编译运行日志比较多，可以运行`aa-test/org.springframework.aa.Main`看看。
 更改为使用IDEA构建和运行，没有gradle日志。
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/6b1e664fa0174c0492ae0811c9371f70.png#pic_center)
 使用IDEA编译和运行会产生一个问题`Kotlin: warnings found and -Werror specified`，解决方式如下：

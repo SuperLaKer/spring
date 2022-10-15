@@ -16,9 +16,6 @@ include "spring-beans"
 include "spring-context"
 include "spring-context-indexer"
 include "spring-context-support"
-//include "spring-core"
-include "kotlin-coroutines"
-project(':kotlin-coroutines').projectDir = file('spring-core/kotlin-coroutines')
 include "spring-expression"
 include "spring-instrument"
 include "spring-jcl"
@@ -35,7 +32,6 @@ include "spring-webflux"
 include "spring-webmvc"
 include "spring-websocket"
 include "framework-bom"
-include "integration-tests"
 
 rootProject.name = "spring"
 rootProject.children.each {project ->

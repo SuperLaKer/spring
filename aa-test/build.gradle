@@ -10,6 +10,8 @@ repositories {
 }
 
 dependencies {
+    implementation 'org.aspectj:aspectjweaver:1.9.9.1'
+
     implementation(project(":spring-context"))
     implementation(project(":spring-context-support"))
     implementation(project(":spring-instrument"))

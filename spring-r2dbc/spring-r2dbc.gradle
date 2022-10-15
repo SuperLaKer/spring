@@ -8,7 +8,7 @@ dependencies {
 	compile(project(":spring-tx"))
 	compile("io.r2dbc:r2dbc-spi")
 	compile("io.projectreactor:reactor-core")
-	compileOnly(project(":kotlin-coroutines"))
+	 
 	optional("org.jetbrains.kotlin:kotlin-reflect")
 	optional("org.jetbrains.kotlin:kotlin-stdlib")
 	optional("org.jetbrains.kotlinx:kotlinx-coroutines-core")

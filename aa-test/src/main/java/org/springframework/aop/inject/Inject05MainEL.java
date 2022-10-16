@@ -9,7 +9,7 @@ import org.springframework.core.MethodParameter;
 
 import java.lang.reflect.Method;
 
-public class Inject05EL {
+public class Inject05MainEL {
 	public static void main(String[] args) throws NoSuchMethodException {
 		GenericApplicationContext context = new GenericApplicationContext();
 		ContextAnnotationAutowireCandidateResolver candidateResolver = new ContextAnnotationAutowireCandidateResolver();

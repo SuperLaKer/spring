@@ -26,4 +26,5 @@ dependencies {
     implementation(project(":spring-webmvc"))
     implementation(project(":spring-oxm"))
     implementation(project(":spring-jdbc"))
+    implementation 'javax.annotation:javax.annotation-api:1.3.2'
 }

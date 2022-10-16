@@ -1,7 +1,6 @@
 apply plugin: 'org.springframework.build.compile'
 apply plugin: 'org.springframework.build.optional-dependencies'
 apply plugin: 'me.champeau.gradle.jmh'
-apply from: "$rootDir/gradle/publications.gradle"
 
 dependencies {
 	jmh 'org.openjdk.jmh:jmh-core:1.23'
